@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
     memcpy(&x, buf, 4);
 
     if(x>0) branch1(x);
-    else if(x < -5) branch2(x);
+    else if(x < -10000000000000) branch2(x);
     
 
     return 0;
