@@ -4,7 +4,7 @@
 #include <string.h>
 
 void inner(int32_t x) {
-    if(x>15&&x<30) abort();
+    if(x>15&&x<3000) abort();
 }
 void outer(int32_t x, int32_t y) {
     if(x>0&&y>0) inner(x+y);

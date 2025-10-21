@@ -12,16 +12,14 @@
 #include <string.h>
 
 void branch1(int32_t x) {
-    if(x > 8) abort();
+    if(x < 500 && x > 200) abort();
 }
 
 void branch2(int32_t x) {
-    if (x < -10) {
+    if (x > -1000) {
         abort();
     }
 }
-
-
 
 int main(int argc, char **argv) {
     unsigned char buf[4] = {0};
@@ -30,9 +28,8 @@ int main(int argc, char **argv) {
     int32_t x = 0;
     memcpy(&x, buf, 4);
 
-    if(x>0) branch1(x);
-    else if(x < -10000000000000) branch2(x);
-    
+    if(x > 0) branch1(x);
+    else if(x < -1) branch2(x);
 
     return 0;
 }
