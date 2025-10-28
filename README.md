@@ -11,3 +11,29 @@
 * To see the input itself, run the following:
     * `CRASH=/path/to/crash/directory/id:000000,sig:06,src:000000,time:39,execs:31,op:havoc,rep:6`
     * `strings "$CRASH" | sed -n '1,40p'` or `od -An -tx1 -c "$CRASH" | head -n 40`
+
+# Notes for Demo
+```
+docker pull aflplusplus/aflplusplus
+docker ps
+docker commit [container id] 
+docker run -it --rm --name afl_small_example -v /Users/safiaboutaleb/Developer/code-to-fuzz:/src [SHA256 hash]
+
+mkdir build
+cd build
+CC=/AFLplusplus/afl-clang-fast CXX=/AFLplusplus/afl-clang-fast++ cmake .. (Add AFL++ tooling to the compiler for executable)
+make
+
+cd ..
+mkdir seeds
+for i in {0..4}; do dd if=/dev/urandom of=seed_$i bs=64 count=10; done
+cd ..
+cd build
+
+/AFLplusplus/afl-fuzz -i /src/test1/seeds -o out -m none -d -- /src/test1/build/test1_crash
+
+gdb --args ./test1_crash
+(inside gbd) (gdb) run < /src/test1/build/out/default/crashes/[example crash] [id:000000,sig:06,src:000002,time:43,execs:48,op:havoc,rep:4]
+bt
+```
+

@@ -1,2 +1,3 @@
 project(test3_crash)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -fno-omit-frame-pointer")
 add_executable(test3_crash test3.c)
