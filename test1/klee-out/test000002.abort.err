@@ -1,0 +1,12 @@
+Error: abort failure
+File: test1_klee_harness.c
+Line: 12
+assembly.ll line: 8917
+State: 2
+Stack: 
+	#000008917 in foo(x=symbolic) at test1_klee_harness.c:12
+	#100008939 in bar(y=symbolic, z=symbolic) at test1_klee_harness.c:18
+	#200008993 in __klee_posix_wrapped_main() at test1_klee_harness.c:41
+	#300007182 in __user_main(argcPtr=1, argvPtr=140092532326400, envp=140092532326416) at klee_src/runtime/POSIX/klee_init_env.c:245
+	#400000529 in __uClibc_main(140076686245888, 1, 140092532326400, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000694 in main(1, 140092532326400)

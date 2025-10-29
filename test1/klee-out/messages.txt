@@ -1,0 +1,15 @@
+KLEE: Using STP solver backend
+KLEE: SAT solver: MiniSat
+KLEE: Logging queries that reach solver in .smt2 format to /src/test1/klee-out/solver-queries.smt2
+
+KLEE: Logging all queries in .smt2 format to /src/test1/klee-out/all-queries.smt2
+
+KLEE: Deterministic allocator: Using quarantine queue size 8
+KLEE: Deterministic allocator: globals (start-address=0x7f67f5a00000 size=10 GiB)
+KLEE: Deterministic allocator: constants (start-address=0x7f6575a00000 size=10 GiB)
+KLEE: Deterministic allocator: heap (start-address=0x7e6575a00000 size=1024 GiB)
+KLEE: Deterministic allocator: stack (start-address=0x7e4575a00000 size=128 GiB)
+KLEE: ERROR: test1_klee_harness.c:21: abort failure
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: test1_klee_harness.c:12: abort failure
+KLEE: NOTE: now ignoring this error at this location
