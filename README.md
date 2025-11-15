@@ -121,7 +121,7 @@ object 2: int : 2147483647
 object 2: uint: 2147483647
 object 2: text: ....
 
-when running `less klee-out/all-queries.smt2`, it showed SMT-LIB formulas:
+when running `less klee-out/all-queries.smt2`, it showed SMT-LIB formulas, here is an example:
 
 ; Query 6 -- Type: InitialValues, Instructions: 13363
 (set-option :produce-models true)
@@ -129,7 +129,15 @@ when running `less klee-out/all-queries.smt2`, it showed SMT-LIB formulas:
 (declare-fun a () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun b () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun r () (Array (_ BitVec 32) (_ BitVec 8) ) )
-(assert (let ( (?B1 (concat  (select  r (_ bv7 32) ) (concat  (select  r (_ bv6 32) ) (concat  (select  r (_ bv5 32) ) (concat  (select  r (_ bv4 32) ) (concat  (select  r (_ bv3 32) ) (concat  (select  r (_ bv2 32) ) (concat  (select  r (_ bv1 32) ) (select  r (_ bv0 32) ) ) ) ) ) ) ) ) ) ) (and  (and  (and  (bvule  ?B1 (_ bv8 64) ) (=  false (bvule  ?B1 (_ bv4 64) ) ) ) (=  false (bvslt  (concat  (select  a (_ bv3 32) ) (concat  (select  a (_ bv2 32) ) (concat  (select  a (_ bv1 32) ) (select  a (_ bv0 32) ) ) ) ) (_ bv100 32) ) ) ) (bvslt  (_ bv3 32) (concat  (select  b (_ bv3 32) ) (concat  (select  b (_ bv2 32) ) (concat  (select  b (_ bv1 32) ) (select  b (_ bv0 32) ) ) ) ) ) ) ) )
+(assert (let ( (?B1 (concat  (select  r (_ bv7 32) ) (concat  (select  r (_ bv6 32) ) (concat  (select  r (_ bv5 32) ) (concat  (select  r (_ bv4 32) ) (concat  (select  r (_ bv3 32) ) (concat  (select  r (_ bv2 32) ) (concat  (select  r (_ bv1 32) ) (select  r (_ bv0 32) ) ) ) ) ) ) ) ) ) ) 
+    (and  
+        (and  
+            (and  (bvule  ?B1 (_ bv8 64) ) 
+            (=  false (bvule  ?B1 (_ bv4 64) ) ) 
+        ) 
+        (=  false (bvslt  (concat  (select  a (_ bv3 32) ) (concat  (select  a (_ bv2 32) ) (concat  (select  a (_ bv1 32) ) (select  a (_ bv0 32) ) ) ) ) (_ bv100 32) ) ) ) 
+        (bvslt  (_ bv3 32) (concat  (select  b (_ bv3 32) ) (concat  (select  b (_ bv2 32) ) (concat  (select  b (_ bv1 32) ) (select  b (_ bv0 32) ) ) ) ) ) ) 
+) )
 (check-sat)
 (get-value ( (select r (_ bv0 32) ) ) )
 (get-value ( (select r (_ bv1 32) ) ) )
